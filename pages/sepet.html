@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sepetim | Butik Giyim</title>
+    <link rel="stylesheet" href="../styles/style.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">MODA BUTİK</div>
+      <ul class="nav-links">
+        <li><a href="../index.html">Ana Sayfa</a></li>
+        <li><a href="urunler.html">Ürünler</a></li>
+        <li><a href="sepet.html">Sepet</a></li>
+        <li><a href="iletisim.html">İletişim</a></li>
+      </ul>
+    </nav>
+
+    <!-- pages/sepet.html ana içerik kısmı -->
+    <main class="container cart-page">
+      <div class="cart-page-header">
+        <h2>Alışveriş Sepetiniz</h2>
+        <p>Seçtiğiniz ürünleri buradan kontrol edebilir ve sepetinizi yönetebilirsiniz.</p>
+      </div>
+
+      <!-- Ürünlerin listeleneceği alan -->
+      <div id="cart-items" class="cart-list-style">
+        <!-- JS burayı dolduracak -->
+        <p>Sepetiniz şu an boş.</p>
+      </div>
+
+      <div class="cart-summary">
+        <h3>Genel Toplam: <span id="total-price">0 TL</span></h3>
+        <button
+          onclick="
+            localStorage.clear();
+            location.reload();
+          "
+          class="clear-btn"
+        >
+          Sepeti Boşalt
+        </button>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2026 Butik Giyim - Tüm Hakları Saklıdır.</p>
+    </footer>
+
+    <script src="../scripts/myscript.js"></script>
+  </body>
+</html>

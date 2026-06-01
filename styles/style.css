@@ -1,0 +1,650 @@
+/* Genel Ayarlar */
+:root {
+    --primary: #8D40D5;
+    --primary-dark: #7431b7;
+    --primary-soft: #f1e6fd;
+    --text: #231a36;
+    --muted: #665a85;
+    --surface: #ffffff;
+    --surface-muted: #f8f5ff;
+    --border: #e4d4f8;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text);
+    background: linear-gradient(180deg, #ffffff 0%, #fbf9ff 100%);
+}
+
+.logo {
+    font-size: 0;
+}
+
+.logo::before {
+    content: "MOR BUTIK";
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+}
+
+.container {
+    width: min(1200px, 92%);
+    margin: 0 auto;
+}
+
+/* Navbar Flexbox Yapısı (Yönerge Madde 14) */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(90deg, var(--primary-dark) 0%, var(--primary) 100%);
+    color: white;
+    padding: 1rem 5%;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Responsive Tasarım (Yönerge Madde 6) */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .nav-links {
+        margin-top: 6px;
+        width: 100%;
+        gap: 2px 14px;
+    }
+    .nav-links li {
+        margin-left: 0;
+    }
+}
+
+/* Footer (Yönerge Madde 4) */
+.footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--surface-muted);
+    margin-top: 20px;
+}
+
+.hero {
+    text-align: center;
+    padding: 42px 10px 16px;
+}
+
+.hero h1 {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    line-height: 1.2;
+}
+
+.hero p {
+    color: var(--muted);
+    margin: 10px 0 16px;
+}
+
+#quiz-start-btn {
+    border-radius: 10px;
+    padding: 12px 18px;
+}
+
+/* Ürün Listeleme Alanı (Yönerge Madde 14) */
+.product-grid {
+    display: flex;
+    flex-wrap: wrap; /* Sığmayan ürünler alt satıra geçer */
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.product-card {
+    flex: 0 1 250px; /* Esnek ama 250px civarında kalır */
+    border: 1px solid var(--border);
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-card img {
+    max-width: 100%;
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+/* Yardımcı Sınıf */
+.hidden {
+    display: none;
+}
+
+/* Ürün Detay Flex Yapısı */
+.product-detail-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 50px 5%;
+    align-items: center;
+}
+
+.detail-img {
+    flex: 1 1 400px;
+}
+
+.detail-info {
+    flex: 1 1 300px;
+}
+
+.detail-page {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 26px 20px 10px;
+}
+
+.detail-page .product-detail-flex {
+    background: linear-gradient(180deg, var(--surface) 0%, #faf7ff 100%);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+    padding: 28px;
+    gap: 32px;
+}
+
+.detail-page .detail-img img {
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.14);
+}
+
+.detail-page .detail-info h2 {
+    font-size: 2rem;
+    line-height: 1.2;
+    color: var(--text);
+    margin-bottom: 8px;
+}
+
+.detail-page .price {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: 10px;
+}
+
+.detail-page .description {
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.75;
+    max-width: 560px;
+    margin-bottom: 18px;
+}
+
+.detail-page .add-to-cart {
+    min-width: 150px;
+    padding: 12px 18px;
+    border-radius: 10px;
+    background: var(--primary);
+    font-weight: 600;
+}
+
+.detail-page .add-to-cart:hover {
+    background: var(--primary-dark);
+}
+
+@media (max-width: 860px) {
+    .detail-page .product-detail-flex {
+        padding: 18px;
+    }
+
+    .detail-page .detail-info h2 {
+        font-size: 1.6rem;
+    }
+}
+
+/* İletişim Formu Tasarımı */
+.contact-form-flex {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 0 auto;
+    gap: 15px;
+    padding: 20px;
+}
+
+.page-title {
+    text-align: center;
+    margin-top: 24px;
+    padding: 0 12px;
+}
+
+.detail-btn {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 9px 14px;
+    border-radius: 8px;
+    background: var(--primary);
+    color: #fff;
+    text-decoration: none;
+}
+
+.detail-btn:hover {
+    background: var(--primary-dark);
+}
+
+input, textarea {
+    padding: 10px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: var(--primary-dark);
+}
+
+/* Ana sayfa quiz alanı */
+#quiz-container {
+    margin: 24px auto 0;
+    max-width: 980px;
+}
+
+.quiz-card {
+    background: linear-gradient(180deg, var(--surface) 0%, #faf7ff 100%);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.quiz-step {
+    color: var(--muted);
+    font-size: 0.92rem;
+    margin-bottom: 8px;
+}
+
+.quiz-card h3 {
+    margin-bottom: 14px;
+}
+
+.quiz-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+}
+
+.quiz-option-btn {
+    background-color: var(--primary);
+    border-radius: 10px;
+    padding: 12px 14px;
+}
+
+.quiz-option-btn:hover {
+    background-color: var(--primary-dark);
+}
+
+.quiz-result-card p {
+    color: var(--muted);
+    margin-bottom: 14px;
+}
+
+.quiz-product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 14px;
+    margin-top: 10px;
+}
+
+.quiz-product-card {
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: var(--surface);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.quiz-product-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.08);
+}
+
+.quiz-product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.quiz-product-card h4 {
+    font-size: 0.98rem;
+    padding: 10px 10px 2px;
+}
+
+.quiz-product-card p {
+    font-weight: 600;
+    color: var(--primary-dark);
+    padding: 0 10px 12px;
+    margin: 0;
+}
+
+.quiz-all-products-link {
+    display: inline-block;
+    margin-top: 16px;
+    color: var(--primary-dark);
+    text-decoration: none;
+    border-bottom: 1px solid var(--primary-dark);
+}
+
+@media (max-width: 640px) {
+    .quiz-card {
+        padding: 18px;
+    }
+
+    .quiz-product-card img {
+        height: 170px;
+    }
+}
+
+/* Sepet Sayfası Tasarımı */
+.cart-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 20px;
+}
+
+.cart-items {
+    flex: 2 1 400px; /* Ürün listesi daha geniş alan kaplar */
+    border: 1px solid var(--border);
+    padding: 15px;
+}
+
+.cart-summary {
+    flex: 1 1 250px; /* Özet kısmı daha dar */
+    background-color: var(--surface-muted);
+    padding: 20px;
+    border-radius: 8px;
+    height: fit-content;
+}
+
+.checkout-btn {
+    width: 100%;
+    margin-top: 15px;
+    background-color: var(--primary);
+}
+
+/* Sepet liste görünümü (modern kart düzeni) */
+.cart-list-style {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 16px;
+}
+
+.cart-page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 26px 20px 14px;
+}
+
+.cart-page-header {
+    margin-bottom: 14px;
+}
+
+.cart-page-header h2 {
+    font-size: 2rem;
+    margin-bottom: 4px;
+    color: var(--text);
+}
+
+.cart-page-header p {
+    color: var(--muted);
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background-color: var(--surface);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cart-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.cart-item img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    flex-shrink: 0;
+}
+
+.cart-item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.cart-item-info h4 {
+    font-size: 1rem;
+    color: var(--text);
+    margin: 0;
+}
+
+.cart-qty-badge {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: var(--primary-soft);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--primary-dark);
+}
+
+.cart-item-info p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin: 0;
+}
+
+.cart-item-info strong {
+    margin-top: 2px;
+    font-size: 1rem;
+    color: var(--primary-dark);
+}
+
+.cart-summary {
+    margin-top: 20px;
+    border: 1px solid var(--border);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+    border-radius: 12px;
+    background: linear-gradient(180deg, var(--surface) 0%, #f2ebff 100%);
+}
+
+.cart-summary h3 {
+    font-size: 1.3rem;
+    color: var(--text);
+}
+
+.clear-btn {
+    margin-top: 12px;
+    background-color: var(--primary);
+}
+
+.clear-btn:hover {
+    background-color: var(--primary-dark);
+}
+
+@media (max-width: 600px) {
+    .cart-item {
+        align-items: flex-start;
+    }
+
+    .cart-item img {
+        width: 76px;
+        height: 76px;
+    }
+
+    .cart-page {
+        width: 94%;
+        padding-inline: 0;
+    }
+
+    .cart-page-header h2 {
+        font-size: 1.55rem;
+    }
+}
+
+/* Ürünlerin yan yana dizildiği ana kapsayıcı */
+.product-flex-layout {
+    display: flex; /* Flexbox'ı etkinleştirir */
+    flex-wrap: wrap; /* Ürünler sığmazsa alt satıra geçer (Responsive kuralı - Madde 6, 10) */
+    justify-content: center; /* Kartları ortalar */
+    gap: 20px; /* Kartlar arası boşluk */
+    padding: 20px;
+}
+
+/* Her bir ürün kartının genişlik ayarı */
+.product-card {
+    flex: 0 1 250px; /* Büyüme: 0, Küçülme: 1, Temel Genişlik: 250px */
+    border: 1px solid var(--border);
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+/* Ürün Detay Sayfası Resim Ayarları */
+
+/* 1. Resmin içinde bulunduğu kutuyu sınırlayalım */
+.detail-img {
+    flex: 1 1 400px; /* Esneklik veriyoruz ama 400px civarında kalmasını istiyoruz */
+    max-width: 400px; /* Kutunun maksimum genişliği 500px olsun */
+    margin: 0 auto; /* Eğer kutu küçük kalırsa ortalansın */
+}
+
+/* 2. Resmin kendisinin kutudan taşmasını engelleyelim */
+.detail-img img {
+    width: 100%; /* Kutunun genişliğine tamamen yayılsın */
+    height: auto; /* Genişlik değiştikçe oran bozulmadan yükseklik ayarlansın */
+    border-radius: 8px; /* Köşeleri hafif yuvarlatmak butik sitelere şıklık katar */
+    object-fit: cover; /* Resmin kutu içine düzgün yerleşmesini sağlar */
+}
+
+@media (max-width: 992px) {
+    .product-flex-layout {
+        gap: 16px;
+        padding: 16px 10px 20px;
+    }
+
+    .product-card {
+        flex: 1 1 calc(50% - 16px);
+        max-width: calc(50% - 10px);
+    }
+
+    .product-card img {
+        height: 240px;
+    }
+
+    .detail-page .product-detail-flex {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .container {
+        width: 94%;
+    }
+
+    .footer {
+        padding: 1.25rem 0.75rem;
+        font-size: 0.92rem;
+    }
+
+    .product-flex-layout {
+        padding-inline: 0;
+    }
+
+    .product-card {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+
+    .product-card img {
+        height: 260px;
+    }
+
+    .contact-form-flex {
+        max-width: 100%;
+        padding: 14px 4px;
+    }
+
+    input, textarea, button {
+        width: 100%;
+    }
+
+    .detail-page {
+        width: 94%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .detail-page .product-detail-flex {
+        padding: 14px;
+        gap: 18px;
+    }
+
+    .detail-page .detail-info h2 {
+        font-size: 1.4rem;
+    }
+
+    .detail-page .price {
+        font-size: 1.12rem;
+    }
+
+    .detail-page .add-to-cart {
+        width: 100%;
+    }
+}
